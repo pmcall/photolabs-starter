@@ -4,10 +4,13 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
-  const { topics } = props;
+  const { topics, updatePhotosByTopics } = props;
   const TopicListItemArray = topics.map((topic) => (
     <div className="topic-list__item" key={topic.id}>
-      <TopicListItem topic={topic}></TopicListItem>
+      <TopicListItem
+        topic={topic}
+        updatePhotosByTopics={updatePhotosByTopics}
+      ></TopicListItem>
     </div>
   ));
 

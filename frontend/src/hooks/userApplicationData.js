@@ -11,6 +11,7 @@ export const ACTIONS = {
   DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
   SHOW_MODAL: "SHOW_MODAL",
   CLOSE_MODAL: "CLOSE_MODAL",
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
 };
 
 const reducer = (state, action) => {
@@ -38,6 +39,8 @@ const reducer = (state, action) => {
       return { ...state, photoData: action.payload };
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return { ...state, photoData: action.payload };
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -79,6 +82,19 @@ const userApplicationData = () => {
     dispatch({ type: ACTIONS.MODAL_PHOTO_DATA, payload: item });
   };
 
+  const updatePhotosByTopics = (flag, topic) => {
+    console.log(topic);
+    if (flag) {
+      fetch(`http://localhost:8001/api/topics/photos/${topic.id}`)
+        .then((res) => res.json())
+        .then((data) =>
+          dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data })
+        );
+    } else {
+      fetchAllPhotos();
+    }
+  };
+
   const fetchAllPhotos = () => {
     fetch("http://localhost:8001/api/photos")
       .then((res) => res.json())
@@ -106,6 +122,7 @@ const userApplicationData = () => {
     closePhotoDetailsModal,
     fetchData,
     updateModalData,
+    updatePhotosByTopics,
   };
 };
 

@@ -13,12 +13,14 @@ const HomeRoute = (props) => {
     photoModal,
     modalData,
     favourites,
+    updatePhotosByTopics,
   } = props;
   return (
     <div className="home-route">
       <TopNavigationBar
         topics={topics}
         favouritePhotoExists={favouritePhotoExists}
+        updatePhotosByTopics={updatePhotosByTopics}
       />
       <div className="photo-list">
         <PhotoList

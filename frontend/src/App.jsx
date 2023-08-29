@@ -15,6 +15,7 @@ const App = () => {
     modalData,
     closePhotoDetailsModal,
     fetchData,
+    updatePhotosByTopics,
   } = userApplicationData();
 
   {
@@ -32,6 +33,7 @@ const App = () => {
         favourites={fetchData.photoIDs}
         favouritePhotoExists={favouritePhotoExists}
         modalData={modalData}
+        updatePhotosByTopics={updatePhotosByTopics}
       />
       {fetchData.modal && (
         <PhotoDetailsModal
