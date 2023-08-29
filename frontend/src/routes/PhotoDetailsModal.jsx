@@ -19,7 +19,6 @@ const PhotoDetailsModal = (props) => {
 
   const item = photos;
 
-  console.log("THIS IS THE ITEM:", item);
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button">

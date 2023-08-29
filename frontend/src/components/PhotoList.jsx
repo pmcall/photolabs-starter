@@ -15,8 +15,6 @@ const PhotoList = (props) => {
     updateModalData,
   } = props;
 
-  console.log("PHOTOS", photos);
-
   const photoListItemArray =
     photos.length > 0
       ? photos.map((item) => (

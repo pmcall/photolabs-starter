@@ -75,15 +75,11 @@ const userApplicationData = () => {
   };
 
   const updateModalData = (flag, item) => {
-    console.log(flag);
-    console.log(item);
-
     dispatch({ type: ACTIONS.SHOW_MODAL, payload: flag });
     dispatch({ type: ACTIONS.MODAL_PHOTO_DATA, payload: item });
   };
 
   const updatePhotosByTopics = (flag, topic) => {
-    console.log(topic);
     if (flag) {
       fetch(`http://localhost:8001/api/topics/photos/${topic.id}`)
         .then((res) => res.json())
