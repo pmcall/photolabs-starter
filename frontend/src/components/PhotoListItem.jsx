@@ -25,7 +25,7 @@ const PhotoListItem = (props) => {
       />
       <img
         className="photo-list__image"
-        onClick={() => modalData(true, item)}
+        onClick={() => modalData(item, true)}
         src={item.urls.regular}
         alt="image"
       />

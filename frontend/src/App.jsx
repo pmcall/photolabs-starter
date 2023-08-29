@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HomeRoute from "routes/HomeRoute";
-import photos from "mocks/photos";
-import topics from "mocks/topics";
+// import photos from "mocks/photos";
+// import topics from "mocks/topics";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import "./App.scss";
 import userApplicationData from "hooks/userApplicationData";
@@ -9,11 +9,16 @@ import userApplicationData from "hooks/userApplicationData";
 const App = () => {
   let favouritePhotoExists = false;
 
-  const { state, updateFavouritePhotoIDs, modalData, closePhotoDetailsModal } =
-    userApplicationData();
+  const {
+    state,
+    updateFavouritePhotoIDs,
+    modalData,
+    closePhotoDetailsModal,
+    fetchData,
+  } = userApplicationData();
 
   {
-    favouritePhotoExists = state.photoIDs.length
+    favouritePhotoExists = fetchData.photoIDs.length
       ? !favouritePhotoExists
       : favouritePhotoExists;
   }
@@ -21,17 +26,17 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        topics={topics}
-        photos={photos}
+        topics={fetchData.topicData}
+        photos={fetchData.photoData}
         updateFavouritePhotoIDs={updateFavouritePhotoIDs}
-        favourites={state.photoIDs}
+        favourites={fetchData.photoIDs}
         favouritePhotoExists={favouritePhotoExists}
         modalData={modalData}
       />
-      {state.modal && (
+      {fetchData.modal && (
         <PhotoDetailsModal
-          photoData={state.photoData}
-          favourites={state.photoIDs}
+          photos={fetchData.selectedPhoto}
+          favourites={fetchData.photoIDs}
           updateFavouritePhotoIDs={updateFavouritePhotoIDs}
           closePhotoDetailsModal={closePhotoDetailsModal}
         />

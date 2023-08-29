@@ -14,10 +14,12 @@ const PhotoDetailsModal = (props) => {
     updateFavouritePhotoIDs,
     closePhotoDetailsModal,
     favourites,
+    updateModalData,
   } = props;
 
-  const item = photoData;
+  const item = photos;
 
+  console.log("THIS IS THE ITEM:", item);
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button">
@@ -43,7 +45,7 @@ const PhotoDetailsModal = (props) => {
         <h1 className="photo-details-modal__header">Similar Photos</h1>
         <div className="photo-details-modal__images">
           <PhotoList
-            photos={Object.values(item.similar_photos)}
+            photos={item.similar_photos}
             updateFavouritePhotoIDs={updateFavouritePhotoIDs}
             favourites={favourites}
           />
